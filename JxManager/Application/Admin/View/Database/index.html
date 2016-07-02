@@ -1,0 +1,50 @@
+<extend name="Public/base" />
+<block name="content">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- BEGIN VALIDATION STATES-->
+            <div class="portlet light portlet-fit portlet-form bordered" id="form_wizard_1">
+                <div class="portlet-title">
+                    <div class="row">
+                        <div class="col-sm-12">
+
+                                <div class="portlet-title tabbable-line">
+                                    <div class="caption caption-md">
+                                        <i class="icon-globe theme-font hide"></i>
+
+                                        <h2 style="color:red">建议：</h2>
+                                        <p>数据的安全性与完整性，是系统赖以实现功能的前提条件。定期的日常备份，能有效减少各种原因造成的数据损遗所导致的损失。</p>
+                                        <p>我们的建议是：至少每月进行一次完整的数据库备份，并将备份文件迁移到安全环境中！</p>
+                                    </div>
+                                </div>
+
+                        </div>
+                    </div>
+                <div class="portlet-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="input-group select2-bootstrap-append select2-bootstrap-prepend input-large">
+                                <div class="input-group-addon">请选择数据库操作</div>
+                                <select name="op" class="form-control select2">
+                                    <option></option>
+                                    <option value="<<{:U('database/op/type/export')}>>">备份数据库</option>
+                                    <option value="<<{:U('database/op/type/import')}>>">恢复数据库</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END VALIDATION STATES-->
+        </div>
+    </div>
+</block>
+<block name="pagescript">
+    <script type="text/javascript" charset="utf-8">
+        +function($){
+            $('select[name=op]').change(function(){
+                location.href = this.value;
+            });
+        }(jQuery);
+    </script>
+</block>

@@ -1,0 +1,167 @@
+<extend name="Public/based" />
+<block name="css">
+    <link rel="stylesheet" type="text/css" href="__ROOT__/Public/assets/pages/css/onethink.css"  media="all">
+    <link rel="stylesheet" type="text/css" href="__ROOT__/Public/assets/plugins/qtip/jquery.qtip.min.css" media="all">
+</block>
+<block name="content">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- BEGIN VALIDATION STATES-->
+            <div class="profile-content">
+                <div class="portlet-title tabbable-line tabbable-full-width">
+                    <div class="profile">
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#tab_1_1" data-toggle="tab"> 访问授权 </a>
+                            </li>
+                            <li>
+                                <a href="<<{:U('AuthManager/category#tab_1_2',array('group_name'=>I('group_name') ,'group_id'=> I('group_id')))}>>" data-toggle="tab"> 分类授权 </a>
+                            </li>
+                            <li>
+                                <a href="#tab_1_3" data-toggle="tab"> 成员授权 </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="tab-content">
+                        <!-- PERSONAL INFO TAB -->
+                        <div class="tab-pane active" id="tab_1_1">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <!-- Begin: life time stats -->
+                                    <div class="portlet light portlet-fit portlet-datatable bordered">
+                                        <div class="portlet-body">
+                                            <form action="<<{:U('AuthManager/writeGroup')}>>" enctype="application/x-www-form-urlencoded" method="POST" class="form-horizontal auth-form">
+                                                <volist name="node_list" id="node" >
+                                                    <dl class="checkmod">
+                                                        <dt class="hd">
+                                                            <label class="checkboxs"><input class="auth_rules rules_all" type="checkbox" name="rules[]" value="<?php echo $main_rules[$node['url']] ?>"><<{$node.title}>></label>
+                                                        </dt>
+                                                        <dd class="bd">
+                                                            <present name="node['child']">
+                                                                <volist name="node['child']" id="child" >
+                                                                    <div class="rule_check">
+                                                                        <div>
+                                                                            <label class="checkboxs" <notempty name="child['tip']">title='<<{$child.tip}>>'</notempty>>
+                                                                            <input class="auth_rules rules_row" type="checkbox" name="rules[]" value="<?php echo $auth_rules[$child['url']] ?>"/><<{$child.title}>>
+                                                                            </label>
+                                                                        </div>
+                                                                        <notempty name="child['operator']">
+                                                                            <span class="divsion">&nbsp;</span>
+                                           <span class="child_row">
+                                               <volist name="child['operator']" id="op">
+                                                   <label class="checkboxs" <notempty name="op['tip']">title='<<{$op.tip}>>'</notempty>>
+                                                   <input class="auth_rules" type="checkbox" name="rules[]"
+                                                          value="<?php echo $auth_rules[$op['url']] ?>"/><<{$op.title}>>
+                                                   </label>
+                                               </volist>
+                                           </span>
+                                                                        </notempty>
+                                                                    </div>
+                                                                </volist>
+                                                            </present>
+                                                        </dd>
+                                                    </dl>
+                                                </volist>
+
+                                                <input type="hidden" name="id" value="{$this_group.id}" />
+                                                <button type="submit" class="btn submit-btn ajax-post" target-form="auth-form">确 定</button>
+                                                <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!-- End: life time stats -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END PERSONAL INFO TAB -->
+                        <!-- CHANGE AVATAR TAB -->
+                        <div class="tab-pane" id="tab_1_2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <!-- Begin: life time stats -->
+                                    <div class="portlet light portlet-fit portlet-datatable bordered">
+                                        <div class="portlet-body">
+                                            2
+                                        </div>
+                                    </div>
+                                    <!-- End: life time stats -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END CHANGE AVATAR TAB -->
+                        <!-- CHANGE PASSWORD TAB -->
+                        <div class="tab-pane" id="tab_1_3">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <!-- Begin: life time stats -->
+                                    <div class="portlet light portlet-fit portlet-datatable bordered">
+                                        <div class="portlet-body">
+                                            3
+                                        </div>
+                                    </div>
+                                    <!-- End: life time stats -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END CHANGE PASSWORD TAB -->
+                    </div>
+                </div>
+            </div>
+            <!-- END VALIDATION STATES-->
+        </div>
+    </div>
+</block>
+<block name="pagescript">
+    <script src="__ROOT__/Public/assets/pages/js/common.js" typ="text/javascript"></script>
+    <script src="__ROOT__/Public/assets/plugins/qtip/jquery.qtip.min.js" type="text/javascript"></script>
+    <script type="text/javascript" charset="utf-8">
+        +function($){
+            var rules = [<<{$this_group.rules}>>];
+            $('.auth_rules').each(function(){
+                if( $.inArray( parseInt(this.value,10),rules )>-1 ){
+                    $(this).prop('checked',true);
+                }
+                if(this.value==''){
+                    $(this).closest('span').remove();
+                }
+            });
+
+            //全选节点
+            $('.rules_all').on('change',function(){
+                $(this).closest('dl').find('dd').find('input').prop('checked',this.checked);
+            });
+            $('.rules_row').on('change',function(){
+                $(this).closest('.rule_check').find('.child_row').find('input').prop('checked',this.checked);
+            });
+
+            $('.checkbox').each(function(){
+                $(this).qtip({
+                    content: {
+                        text: $(this).attr('title'),
+                        title: $(this).text()
+                    },
+                    position: {
+                        my: 'bottom center',
+                        at: 'top center',
+                        target: $(this)
+                    },
+                    style: {
+                        classes: 'qtip-dark',
+                        tip: {
+                            corner: true,
+                            mimic: false,
+                            width: 10,
+                            height: 10
+                        }
+                    }
+                });
+            });
+
+            $('select[name=group]').change(function(){
+                location.href = this.value;
+            });
+        }(jQuery);
+    </script>
+</block>

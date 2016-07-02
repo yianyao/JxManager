@@ -1,0 +1,207 @@
+.main {
+    padding:20px;
+    background-color: #f6f6f6;
+}
+.main-title {
+    padding-bottom: 20px;
+    *zoom: 1;
+}
+.main-title:before,
+.main-title:after {
+    display: table;
+    content: "";
+}
+.main-title:after {
+    clear: both;
+}
+.main-title h2 {
+    float: left;
+    font-size: 20px;
+    font-weight: 400;
+    color: #445566;
+}
+.main-title .tools {
+    float: right;
+    margin-top: 5px;
+}
+.main-title .ca {
+    display: inline-block;
+    margin: 0 10px;
+    width: 5px;
+    height: 10px;
+}
+/* 布局样式 */
+.cf,.nav,.container-span {
+    *zoom: 1;
+}
+.cf:before, .cf:after,
+.nav:before, .nav:after,
+.container-span:before,
+.container-span:after {
+    display: table;
+    content: "";
+}
+.cf:after,.nav:after,
+.container-span:after {
+    clear: both;
+}
+.data-table {
+    margin: 10px 0;
+}
+.data-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.data-table caption {
+    height: 30px;
+    line-height: 30px;
+    font-weight: 700;
+}
+.data-table thead th,
+.data-table tbody td {
+    padding:8px;
+    height: 19px;
+    line-height: 19px;
+    font-weight: 400;
+}
+.data-table thead th {
+    text-align: left;
+    color:#fff;
+    background-color: #353535;
+}
+.data-table tbody tr {
+    background-color: #fefefe;
+    color: #686868;
+}
+.data-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* 复选框的列宽 */
+.row-selected {
+    width: 15px;
+}
+/* 被禁用的按钮 */
+.btn.disabled {
+    background-color: #8d8d8d;
+    cursor: not-allowed;
+}
+
+/* = 按钮
+------------------------------------------ */
+/* 常规按钮 */
+.btn {
+    display: inline-block;
+    margin-right: 5px;
+    padding: 6px 16px;
+    font-size: 14px;
+    line-height: 18px;
+    color: #edffd1;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 0 none;
+    background-color: #4bbd00;
+    *outline: 0 none;
+}
+.btn:hover {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #4cdb00;
+    border-bottom: 0 none;
+}
+.submit-btn,
+.btn-return {
+    padding: 10px 50px;
+    color: #fff;
+    font-weight: bold;
+    border-color: transparent;
+}
+.submit-btn {
+    background-color: #CC3900;
+}
+.submit-btn:hover {
+    color: #fff;
+    background-color: #ff2610;
+}
+.btn[disabled],
+.btn.disabled,
+.btn[disabled]:hover,
+.btn.disabled:hover {
+    background-color: #8d8d8d;
+}
+.save-btn {
+    padding: 10px 30px;
+    background-color: #3737BC;
+}
+.btn-mini {
+    padding: 4px 10px;
+}
+.btn-xlarge {
+    padding: 10px 30px;
+}
+
+/* 按钮组 */
+.btn-toolbar .btn {
+    float: left;
+    margin-left: -1px;
+    border-radius: 0;
+}
+.btn-toolbar .btn:first-child {
+    border-radius: 3px 0 0 3px;
+}
+.btn-toolbar .btn:last-of-type {
+    border-radius: 0 3px 3px 0;
+}
+
+/* 带下拉框的按钮组 */
+.btn-group,
+.btn-group-click {
+    display: inline-block;
+    *display: inline;
+    position: relative;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+.btn-group .btn,
+.btn-group-click .btn {
+    margin-right: 0;
+}
+.btn-arrowdown,
+.btn-arrowup {
+    display: inline-block;
+    margin-left: 10px;
+    width: 10px;
+    height: 5px;
+    vertical-align: middle;
+    background-image: url(../images/bg_icon.png);
+    background-repeat: no-repeat;
+}
+.btn-arrowdown {
+    background-position: 0 -25px;
+}
+.btn-arrowup {
+    background-position: -25px -25px;
+}
+.btn-group .dropdown,
+.btn-group-click .dropdown {
+    display: none;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    margin-top: 3px;
+    min-width: 85px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+.btn-group .dropdown a,
+.btn-group-click .dropdown a {
+    padding: 6px 16px;
+    height: 18px;
+    line-height: 18px;
+    white-space: nowrap;
+}
+.btn-group .dropdown a:hover,
+.btn-group-click .dropdown a:hover {
+    background-color: #eee;
+}

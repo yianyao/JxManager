@@ -1,0 +1,117 @@
+<extend name="Public/based"/>
+<block name="css">
+    <link href="__ROOT__/Public/assets/pages/css/profile.min.css" rel="stylesheet" type="text/css"/>
+    <link href="__ROOT__/Public/assets/globals/css/dt.css" rel="stylesheet" type="text/css"/>
+    <link href="__ROOT__/Public/assets/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css"/>
+    <link href="__ROOT__/Public/assets/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet"
+          type="text/css"/>
+    <link href="__ROOT__/Public/assets/plugins/multiple-select-master/multiple-select.css" rel="stylesheet"
+          type="text/css"/>
+    <link href="__ROOT__/Public/assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet"
+          type="text/css"/>
+
+</block>
+<block name="content">
+    <div class="col-md-12">
+        <!-- BEGIN VALIDATION STATES-->
+        <div class="portlet light portlet-fit portlet-form bordered">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class=" icon-layers font-red"></i>
+                    <span class="caption-subject font-red sbold uppercase"><<{$title}>>配置</span>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <!-- BEGIN FORM-->
+                <form action="__ACTION__" id="formvalid2" method="POST">
+                    <div class="form-body">
+                        <div class="form-group form-md-line-input">
+                            <input type="text" class="form-control" name="name" id="name" value="<<{$info.name|default=''}>>" >
+                            <label for="form_control_1">配置标识
+                                <span class="required">*</span>
+                            </label>
+                            <span class="help-block">用于函数调用，只能使用唯一的英文标识...</span>
+                        </div>
+                        <div class="form-group form-md-line-input">
+                            <input type="text" class="form-control" name="title" id="title" value="<<{$info.title|default=''}>>">
+                            <label for="form_control_1">配置标题
+                                <span class="required">*</span>
+                            </label>
+                            <span class="help-block">用于后台显示...</span>
+                        </div>
+                        <div class="form-group form-md-line-input">
+                            <input type="text" class="form-control" id="sort" name="sort" value="<<{$info.sort|default=0}>>">
+                            <label for="form_control_1">排序
+                            </label>
+                            <span class="help-block">用于分组显示的顺序...</span>
+                        </div>
+                        <div class="form-group form-md-line-input">
+                            <select class="form-control" name="type" id="type">
+                               <option value="0">数字</option>
+                                <option value="1">字符</option>
+                                <option value="2">文本</option>
+                                <option value="3">数组</option>
+                                <option value="4">枚举</option>
+                           </select>
+                            <label for="form_control_1">配置类型</label>
+                            <span class="help-block">系统会根据不同类型解析配置值...</span>
+                        </div>
+                        <div class="form-group form-md-line-input">
+                            <select class="form-control" name="group" id="group">
+                                <option value="0">不分组</option>
+                                <option value="1">内容</option>
+                                <option value="2">用户</option>
+                                <option value="3">系统</option>
+                            </select>
+                            <label for="form_control_1">配置分组</label>
+                            <span class="help-block">用于批量设置...</span>
+                        </div>
+                        <div class="form-group form-md-line-input">
+                            <textarea class="form-control" name="value" id="value"><<{$info.value|default=''}>></textarea>
+                            <label for="form_control_1">配置值
+                            </label>
+                            <span class="help-block">配置值...</span>
+                        </div>
+                        <div class="form-group form-md-line-input">
+                            <textarea class="form-control" name="extra" id="extra"><<{$info.extra|default=''}>></textarea>
+                            <label for="form_control_1">配置项
+                            </label>
+                            <span class="help-block">如果是枚举类型，需要配置该项...</span>
+                        </div>
+                        <div class="form-group form-md-line-input">
+                            <input type="text" class="form-control" id="remark" name="remark" value="<<{$info.remark|default=''}>>">
+                            <label for="form_control_1">说明</label>
+                            <input type="hidden" name="id" value="<<{$info.id|default=''}>>">
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn green">提交</button>
+                                <button type="reset" class="btn default" onclick="javascript:history.back(-1);return false;">返回</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!-- END FORM-->
+            </div>
+        </div>
+        <!-- END VALIDATION STATES-->
+    </div>
+</block>
+<block name="script">
+    <script src="__ROOT__/Public/assets/plugins/datatables/datatables.min.js" type="text/javascript"></script>
+    <script src="__ROOT__/Public/assets/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js"
+            type="text/javascript"></script>
+    <script src="__ROOT__/Public/assets/plugins/multiple-select-master/multiple-select.js"
+            type="text/javascript"></script>
+    <script src="__ROOT__/Public/assets/pages/js/jquery.form.js" type="text/javascript"></script>
+    <script src="__ROOT__/Public/assets/plugins/jquery-validation/js/jquery.validate.min.js"
+            type="text/javascript"></script>
+    <script src="__ROOT__/Public/assets/plugins/jquery-validation/js/additional-methods.min.js"
+            type="text/javascript"></script>
+    <script src="__ROOT__/Public/assets/plugins/layer/layer.js" type="text/javascript"></script>
+</block>
+<block name="pagescript">
+    <script src="__ROOT__/Public/assets/pages/js/ConfigValid.js" type="text/javascript"></script>
+</block>

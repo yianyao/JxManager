@@ -1,0 +1,490 @@
+<extend name="Public/based"/>
+<block name="css">
+    <link href="__ROOT__/Public/assets/pages/css/profile.min.css" rel="stylesheet" type="text/css"/>
+    <link href="__ROOT__/Public/assets/globals/css/dt.css" rel="stylesheet" type="text/css"/>
+    <link href="__ROOT__/Public/assets/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css"/>
+    <link href="__ROOT__/Public/assets/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet"
+          type="text/css"/>
+    <link href="__ROOT__/Public/assets/plugins/multiple-select-master/multiple-select.css" rel="stylesheet"
+          type="text/css"/>
+    <link href="__ROOT__/Public/assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet"
+          type="text/css"/>
+
+</block>
+<block name="content">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- BEGIN PROFILE CONTENT -->
+            <div class="profile-content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="portlet light bordered">
+                            <div class="portlet-title tabbable-line">
+                                <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a href="#tab_1_1" data-toggle="tab">用户注册</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab_1_2" data-toggle="tab">用户管理</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab_1_3" data-toggle="tab">权限管理</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="portlet-body">
+                                <div class="tab-content">
+                                    <!-- PERSONAL INFO TAB -->
+                                    <div class="tab-pane active" id="tab_1_1">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <!-- Begin: life time stats -->
+                                                <div class="portlet light portlet-fit portlet-datatable bordered">
+                                                    <div class="portlet-body">
+                                                        <div class="table-container">
+                                                            <div class="table-actions-wrapper">
+                                                                <span> </span>
+                                                            </div>
+                                                            <table class="table table-striped table-bordered table-hover table-checkable"
+                                                                   id="userTable">
+                                                                <thead>
+                                                                <tr role="row" class="heading">
+                                                                    <th><input type="checkbox" class="group-checkable"></th>
+                                                                    <th> 姓名</th>
+                                                                    <th> 账号</th>
+                                                                    <th> 部门</th>
+                                                                    <th> 邮箱</th>
+                                                                    <th> 手机</th>
+                                                                    <th> 状态</th>
+                                                                    <th> 操作</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody></tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- End: life time stats -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- END PERSONAL INFO TAB -->
+                                    <!-- CHANGE AVATAR TAB -->
+                                    <div class="tab-pane" id="tab_1_2">
+
+                                    </div>
+                                    <!-- END CHANGE AVATAR TAB -->
+                                    <!-- CHANGE PASSWORD TAB -->
+                                    <div class="tab-pane" id="tab_1_3">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <!-- Begin: life time stats -->
+                                                <div class="portlet light portlet-fit portlet-datatable bordered">
+                                                    <div class="portlet-body">
+                                                        <div class="table-container">
+                                                            <div class="table-actions-wrapper">
+                                                                <span> </span>
+                                                            </div>
+                                                            <table class="table table-striped table-bordered table-hover table-checkable"
+                                                                   id="datatable_ajax">
+                                                                <thead>
+                                                                <tr role="row" class="heading">
+                                                                    <th width="2%">
+                                                                        <input type="checkbox" class="group-checkable"></th>
+                                                                    <th> Name</th>
+                                                                    <th> Date</th>
+                                                                    <th> Position</th>
+                                                                    <th> Email</th>
+                                                                    <th> Office</th>
+                                                                    <th> Age</th>
+                                                                    <th> Salary</th>
+                                                                    <th> Actions</th>
+                                                                </tr>
+                                                                <tr role="row" class="filter">
+                                                                    <td></td>
+                                                                    <td>
+                                                                        <input type="text" class="form-control form-filter input-sm"
+                                                                               name="order_id"></td>
+                                                                    <td>
+                                                                        <div class="input-group date date-picker margin-bottom-5"
+                                                                             data-date-format="yyyy-mm-dd">
+                                                                            <input type="text" class="form-control form-filter input-sm"
+                                                                                   readonly name="order_date_from" placeholder="From">
+                                                                            <span class="input-group-btn">
+                                                                                <button class="btn btn-sm default" type="button">
+                                                                                    <i class="fa fa-calendar"></i>
+                                                                                </button>
+                                                                            </span>
+                                                                        </div>
+                                                                        <div class="input-group date date-picker"
+                                                                             data-date-format="yyyy-mm-dd">
+                                                                            <input type="text" class="form-control form-filter input-sm"
+                                                                                   readonly name="order_date_to" placeholder="To">
+                                                                            <span class="input-group-btn">
+                                                                                <button class="btn btn-sm default" type="button">
+                                                                                    <i class="fa fa-calendar"></i>
+                                                                                </button>
+                                                                            </span>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="text" class="form-control form-filter input-sm"
+                                                                               name="order_customer_name"></td>
+                                                                    <td>
+                                                                        <input type="text" class="form-control form-filter input-sm"
+                                                                               name="order_ship_to"></td>
+                                                                    <td>
+                                                                        <div class="margin-bottom-5">
+                                                                            <input type="text" class="form-control form-filter input-sm"
+                                                                                   name="order_price_from" placeholder="From"/></div>
+                                                                        <input type="text" class="form-control form-filter input-sm"
+                                                                               name="order_price_to" placeholder="To"/></td>
+                                                                    <td>
+                                                                        <div class="margin-bottom-5">
+                                                                            <input type="text"
+                                                                                   class="form-control form-filter input-sm margin-bottom-5 clearfix"
+                                                                                   name="order_quantity_from" placeholder="From"/></div>
+                                                                        <input type="text" class="form-control form-filter input-sm"
+                                                                               name="order_quantity_to" placeholder="To"/></td>
+                                                                    <td>
+                                                                        <select name="order_status"
+                                                                                class="form-control form-filter input-sm">
+                                                                            <option value="">Select...</option>
+                                                                            <option value="pending">Pending</option>
+                                                                            <option value="closed">Closed</option>
+                                                                            <option value="hold">On Hold</option>
+                                                                            <option value="fraud">Fraud</option>
+                                                                        </select>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="margin-bottom-5">
+                                                                            <button class="btn btn-sm green btn-outline filter-submit margin-bottom">
+                                                                                <i class="fa fa-search"></i> 搜索
+                                                                            </button>
+                                                                        </div>
+                                                                        <button class="btn btn-sm red btn-outline filter-cancel">
+                                                                            <i class="fa fa-times"></i> 重置
+                                                                        </button>
+                                                                    </td>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody></tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- End: life time stats -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- END CHANGE PASSWORD TAB -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="modal" style="display:none">
+                    <div class="portlet light portlet-fit portlet-form bordered">
+                        <div class="portlet-body">
+                            <!-- BEGIN FORM-->
+                            <form action="#" class="form-horizontal" id="formvalid4">
+                                <div class="form-body">
+                                    <div class="form-group form-md-line-input">
+                                        <label class="col-md-3 control-label" for="form_control_1">账号
+                                            <span class="required">*</span>
+                                        </label>
+
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" name="username" id="username"
+                                                   placeholder="administrator" required="required" />
+
+                                            <div class="form-control-focus"></div>
+                                            <span class="help-block">请输入账号，最少六个字母...</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-md-line-input">
+                                        <label class="col-md-3 control-label" for="form_control_1">姓名
+                                            <span class="required">&nbsp;</span>
+                                        </label>
+
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" name="nickname" id="nickname" placeholder="请输入姓名，中英文皆可">
+
+                                            <div class="form-control-focus"></div>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-md-line-input">
+                                        <label class="col-md-3 control-label" for="form_control_1">密码
+                                            <span class="required">*</span>
+                                        </label>
+
+                                        <div class="col-md-9">
+                                            <input type="password" class="form-control" name="password" id="password"
+                                                   placeholder="请输入密码" required="required" />
+
+                                            <div class="form-control-focus"></div>
+                                            <span class="help-block">请输入密码，最少六个字母...</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-md-line-input">
+                                        <label class="col-md-3 control-label" for="form_control_1">重复密码
+                                            <span class="required">*</span>
+                                        </label>
+
+                                        <div class="col-md-9">
+                                            <input type="password" class="form-control" name="repassword" id="repassword"
+                                                   placeholder="请重复输入密码" required="required" />
+
+                                            <div class="form-control-focus"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-md-line-input">
+                                        <label class="col-md-3 control-label" for="form_control_1">邮件
+                                            <span class="required">*</span>
+                                        </label>
+
+                                        <div class="col-md-9">
+                                            <input type="email" class="form-control" id="email" name="email"
+                                                   placeholder="admin@itpdc.com" required="required" />
+
+                                            <div class="form-control-focus"></div>
+                                            <span class="help-block">请输入邮件地址</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-md-line-input">
+                                        <label class="col-md-3 control-label" for="form_control_1">微信</label>
+
+                                        <div class="col-md-9">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="wx" name="wx" placeholder="请输入微信号">
+                                                                        <span class="input-group-addon">
+                                                                            <i class="fa fa-i-cursor"></i>
+                                                                        </span>
+
+                                                <div class="form-control-focus"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-md-line-input">
+                                        <label class="col-md-3 control-label" for="form_control_1">手机
+                                            <span class="required">*</span>
+                                        </label>
+
+                                        <div class="col-md-9">
+                                            <input type="number" class="form-control" id="mobile" name="mobile" placeholder="13800138000" required="required" />
+
+                                            <div class="form-control-focus"></div>
+                                            <span class="help-block">请输入11位手机号码</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-md-line-input">
+                                        <label class="col-md-3 control-label" for="form_control_1">性别</label>
+
+                                        <div class="col-md-9">
+                                            <select class="form-control" id="sex" name="sex">
+                                                <option value="male">男</option>
+                                                <option value="female">女</option>
+                                            </select>
+
+                                            <div class="form-control-focus"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-md-line-input">
+                                        <label class="col-md-3 control-label" for="form_control_1">部门</label>
+                                        <div class="col-md-9">
+                                            <select class="form-control" id="dept" name="dept" >
+                                                <option value="总经办">总经办</option>
+                                                <option value="业务部">业务部</option>
+                                                <option value="采购部">采购部</option>
+                                                <option value="生产部">生产部</option>
+                                                <option value="行政部">行政部</option>
+                                            </select>
+                                            <div class="form-control-focus"> </div>
+                                            <span class="help-block">请选择部门</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-md-radios">
+                                        <label class="col-md-3 control-label" for="form_control_1">状态</label>
+
+                                        <div class="col-md-9">
+                                            <div class="md-radio-inline">
+                                                <div class="md-radio">
+                                                    <input type="radio" id="checkbox1_8" name="status" value="1" class="md-radiobtn" checked>
+                                                    <label for="checkbox1_8">
+                                                        <span></span>
+                                                        <span class="check"></span>
+                                                        <span class="box"></span> 启用 </label>
+                                                </div>
+                                                <div class="md-radio">
+                                                    <input type="radio" id="checkbox1_9" name="status" value="0" class="md-radiobtn">
+                                                    <label for="checkbox1_9">
+                                                        <span></span>
+                                                        <span class="check"></span>
+                                                        <span class="box"></span> 禁用 </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- END FORM-->
+                        </div>
+                    </div>
+                </div>
+
+                <div id="edit" style="display:none">
+                    <div class="portlet light portlet-fit portlet-form bordered">
+                        <div class="portlet-body">
+                            <!-- BEGIN FORM-->
+                            <form action="#" class="form-horizontal" id="formvalid">
+                                <div class="form-body">
+                                    <div class="form-group form-md-line-input">
+                                        <label class="col-md-3 control-label" for="form_control_1">账号
+                                            <span class="required">*</span>
+                                        </label>
+
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" name="username-edit" id="username-edit"
+                                                   placeholder="administrator" />
+
+                                            <div class="form-control-focus"></div>
+                                            <span class="help-block">请输入账号，最少六个字母...</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-md-line-input">
+                                        <label class="col-md-3 control-label" for="form_control_1">姓名
+                                            <span class="required">&nbsp;</span>
+                                        </label>
+
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" name="nickname-edit" id="nickname-edit" placeholder="请输入姓名，中英文皆可">
+
+                                            <div class="form-control-focus"></div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group form-md-line-input">
+                                        <label class="col-md-3 control-label" for="form_control_1">邮件
+                                            <span class="required">*</span>
+                                        </label>
+
+                                        <div class="col-md-9">
+                                            <input type="email" class="form-control" id="email-edit" name="email-edit"
+                                                   placeholder="admin@itpdc.com" required="required" />
+
+                                            <div class="form-control-focus"></div>
+                                            <span class="help-block">请输入邮件地址</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-md-line-input">
+                                        <label class="col-md-3 control-label" for="form_control_1">微信</label>
+
+                                        <div class="col-md-9">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="wx-edit" name="wx-edit" placeholder="请输入微信号">
+                                                                        <span class="input-group-addon">
+                                                                            <i class="fa fa-i-cursor"></i>
+                                                                        </span>
+
+                                                <div class="form-control-focus"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-md-line-input">
+                                        <label class="col-md-3 control-label" for="form_control_1">手机
+                                            <span class="required">*</span>
+                                        </label>
+
+                                        <div class="col-md-9">
+                                            <input type="number" class="form-control" id="mobile-edit" name="mobile-edit" placeholder="13800138000" required="required" />
+
+                                            <div class="form-control-focus"></div>
+                                            <span class="help-block">请输入11位手机号码</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-md-line-input">
+                                        <label class="col-md-3 control-label" for="form_control_1">性别</label>
+
+                                        <div class="col-md-9">
+                                            <select class="form-control" id="sex-edit" name="sex-edit">
+                                                <option value="male">男</option>
+                                                <option value="female">女</option>
+                                            </select>
+
+                                            <div class="form-control-focus"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-md-line-input">
+                                        <label class="col-md-3 control-label" for="form_control_1">部门</label>
+                                        <div class="col-md-9">
+                                            <select class="form-control" id="dept-edit" name="dept-edit" >
+                                                <option value="总经办">总经办</option>
+                                                <option value="业务部">业务部</option>
+                                                <option value="采购部">采购部</option>
+                                                <option value="生产部">生产部</option>
+                                                <option value="行政部">行政部</option>
+                                            </select>
+                                            <div class="form-control-focus"> </div>
+                                            <span class="help-block">请选择部门</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-md-radios">
+                                        <label class="col-md-3 control-label" for="form_control_1">状态</label>
+
+                                        <div class="col-md-9">
+                                            <div class="md-radio-inline">
+                                                <div class="md-radio">
+                                                    <input type="radio" id="checkbox1_8" name="status-edit" value="1" class="md-radiobtn" checked>
+                                                    <label for="checkbox1_8">
+                                                        <span></span>
+                                                        <span class="check"></span>
+                                                        <span class="box"></span> 启用 </label>
+                                                </div>
+                                                <div class="md-radio">
+                                                    <input type="radio" id="checkbox1_9" name="status-edit" value="0" class="md-radiobtn">
+                                                    <label for="checkbox1_9">
+                                                        <span></span>
+                                                        <span class="check"></span>
+                                                        <span class="box"></span> 禁用 </label>
+                                                </div>
+                                                <!-- 隐藏域用于传递ID -->
+                                                <input type="hidden" id="uid" name="uid" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- END FORM-->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- END PROFILE CONTENT -->
+        </div>
+    </div>
+</block>
+<block name="script">
+    <script src="__ROOT__/Public/assets/plugins/datatables/datatables.min.js" type="text/javascript"></script>
+    <script src="__ROOT__/Public/assets/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js"
+            type="text/javascript"></script>
+    <script src="__ROOT__/Public/assets/plugins/multiple-select-master/multiple-select.js"
+            type="text/javascript"></script>
+    <script src="__ROOT__/Public/assets/pages/js/jquery.form.js" type="text/javascript"></script>
+    <script src="__ROOT__/Public/assets/plugins/jquery-validation/js/jquery.validate.min.js"
+            type="text/javascript"></script>
+    <script src="__ROOT__/Public/assets/plugins/jquery-validation/js/additional-methods.min.js"
+            type="text/javascript"></script>
+    <script src="__ROOT__/Public/assets/plugins/layer/layer.js" type="text/javascript"></script>
+</block>
+<block name="pagescript">
+    <!--
+    <script src="__ROOT__/Public/assets/pages/js/constant.js" type="text/javascript"></script>
+    <script src="__ROOT__/Public/assets/pages/js/dtajax.js" type="text/javascript"></script>
+    <script src="__ROOT__/Public/assets/pages/js/userTable.js" type="text/javascript"></script>
+    -->
+    <script src="__ROOT__/Public/assets/globals/js/dataTablePlus.js"></script>
+    <script src="__ROOT__/Public/assets/pages/js/userHandle.js"></script>
+</block>

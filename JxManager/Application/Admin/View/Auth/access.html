@@ -1,0 +1,114 @@
+<extend name="Public/base"/>
+<!-- jquery.uniform.min.js表单美化插件 可能会和jquery.js冲突导致无法通过jq进行复选框的选择与取消操作，所以该页面及数据库备份页面使用base模板 -->
+<block name="css">
+    <style type="text/css">
+        .lfoat{
+            float:left;
+        }
+    </style>
+
+</block>
+<block name="content">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- BEGIN VALIDATION STATES-->
+            <div class="portlet light portlet-fit portlet-form bordered" id="form_wizard_1">
+                <div class="portlet-title">
+                    <div class="row">
+                        <div class="col-sm-12">
+                           <div class="input-group select2-bootstrap-append select2-bootstrap-prepend input-large">
+                               <div class="input-group-addon">请选择角色</div>
+                               <select name="group" class="form-control select2">
+                                   <volist name="auth_group" id="vo">
+                                       <option value="<<{:U('Auth/access',array('group_id'=>$vo['id'],'group_name'=>$vo['title']))}>>"
+                                       <eq name="vo['id']" value="$this_group['id']">selected</eq> ><<{$vo.title}>></option>
+                                   </volist>
+                                </select>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <!-- BEGIN FORM-->
+                            <form action="#" class="form-horizontal">
+                                <div class="form-body">
+                                  <volist name="node_list" id="node" >
+                                    <div class="portlet-body form">
+                                        <div class="col-md-10">
+                                                <ul class="list-unstyled">
+                                                    <li>
+                                                        <label class="row profile-account ">
+                                                            <input type="checkbox" class="checkAll" name="rules" value="<?php echo $main_rules[$node['url']] ?>" />
+                                                            <<{$node.title}>>
+                                                        </label>
+                                                            <volist name="node['child']" id="child" >
+                                                                <ul class="list-unstyled">
+                                                                    <li>
+                                                                        <label class="caption-subject font-dark">
+                                                                            <input type="checkbox"  class="checkRule" name="rules" value="<?php echo $auth_rules[$child['url']] ?>" />
+                                                                                <<{$child.title}>>
+                                                                        </label>
+                                                                        <volist name="child['operator']" id="op">
+                                                                                <ul class="list-unstyled">
+                                                                                    <li class="lfoat">
+                                                                                        <label>
+                                                                                            <input type="checkbox" class="checkRule" name="rules" value="<?php echo $auth_rules[$op['url']] ?>" />
+                                                                                            <<{$op.title}>>
+                                                                                        </label>
+                                                                                    </li>
+                                                                                </ul>
+                                                                        </volist>
+                                                                        <div class="clearfix"> </div>
+                                                                    </li>
+                                                                </ul>
+                                                        </volist>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </volist>
+                                    <div class="form-group"></div>
+                                    <div class="row">
+                                        <div class="col-md-offset-3 col-md-9">
+                                                <button type="submit" class="btn green">提交</button>
+                                                <button type="button" class="btn default"  onclick="javascript:history.back(-1);return false;">返回</button>
+                                            </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- END FORM-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END VALIDATION STATES-->
+        </div>
+    </div>
+</block>
+<block name="pagescript">
+
+    <script type="text/javascript" charset="utf-8">
+        
+        +function($){
+             //全选节点
+            $(".checkAll").on('change',function(){
+                //$(this).closest("ul").find("li").find("input").prop("checked",this.checked);
+                var pt = $(this).closest('ul');
+                var s = pt.find('li > ul > li > label input[type="checkbox"]');
+                var checked = $(this).prop("checked");
+                $(s).each(function(){
+                    //console.dir($(this));
+                    $(this).prop("checked",checked);
+                });
+                //console.dir(s);
+            })
+            //TODO：后续更新时可以添加，取消勾选某个子节点时，对应的全选框同步取消勾选（如数据库备份）
+
+            $('select[name=group]').change(function(){
+                location.href = this.value;
+            });
+        }(jQuery);
+    </script>
+</block>
